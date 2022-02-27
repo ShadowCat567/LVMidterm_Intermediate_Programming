@@ -10,6 +10,7 @@ public class PlayerProjSpawner : MonoBehaviour
     List<GameObject> projList = new List<GameObject>();
     int numProjectile = 15;
     Vector3 spawnPos;
+    public Vector3 mousePos;
 
     private void Awake()
     {
@@ -36,31 +37,10 @@ public class PlayerProjSpawner : MonoBehaviour
             foreach(GameObject proj in projList)
             {
                 if(proj.activeSelf == false)
-                {   //change this so it shoots in the direction of the mouse
-                    if (Input.GetKey(KeyCode.A))
-                    {
-                        proj.gameObject.GetComponent<PlayerProjBeh>().direction = Vector3.left;
-                        spawnPos = new Vector3(transform.position.x - (playerBc.size.x / 2), transform.position.y, transform.position.z);
-                    }
-
-                    else if (Input.GetKey(KeyCode.D))
-                    {
-                        proj.gameObject.GetComponent<PlayerProjBeh>().direction = Vector3.right;
-                        spawnPos = new Vector3(transform.position.x + (playerBc.size.x / 2), transform.position.y, transform.position.z);
-                    }
-
-                    else if (Input.GetKey(KeyCode.W))
-                    {
-                        proj.gameObject.GetComponent<PlayerProjBeh>().direction = Vector3.up;
-                        spawnPos = new Vector3(transform.position.x, transform.position.y + (playerBc.size.y /2), transform.position.z);
-                    }
-
-                    else if (Input.GetKey(KeyCode.S))
-                    {
-                        proj.gameObject.GetComponent<PlayerProjBeh>().direction = Vector3.down;
-                        spawnPos = new Vector3(transform.position.x, transform.position.y - (playerBc.size.y / 2), transform.position.z);
-                    }
-
+                {
+                    //this help a bit with figuring out how to set direction: https://stackoverflow.com/questions/47589876/shooting-a-projectile-towards-mouse-location-in-unity
+                    proj.GetComponent<PlayerProjBeh>().direction = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    spawnPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
                     proj.transform.position = spawnPos;
                     proj.SetActive(true);
                     break;

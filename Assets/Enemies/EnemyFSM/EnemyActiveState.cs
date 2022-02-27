@@ -21,9 +21,11 @@ public class EnemyActiveState : EnemyBaseState
                 enemy.ChangeState(enemy.idleState);
             }
         }
-        //if enemy is charging enemy, if the player is in range, chase the player
 
-        //if enemy is shooting enemy, is player is in range, shoot the player
+        else
+        {
+            //fire projectile
+        }
     }
 
     public override void ExitState(EnemyTemplate enemy)
