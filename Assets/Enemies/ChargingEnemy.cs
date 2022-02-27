@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChargingEnemy : EnemyTemplate
 {
     int maxHealthCharging = 2;
-    [SerializeField] GameObject droppedItem;
+    //[SerializeField] GameObject droppedItem;
 
     private void Awake()
     {
@@ -16,12 +16,12 @@ public class ChargingEnemy : EnemyTemplate
     // Start is called before the first frame update
     void Start()
     {
-        
+        ChangeState(idleState);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        curState.UpdateState(this);
     }
 }

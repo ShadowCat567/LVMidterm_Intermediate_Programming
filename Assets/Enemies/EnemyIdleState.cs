@@ -11,7 +11,10 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void UpdateState(EnemyTemplate enemy)
     {
-
+        if (Vector3.Distance(enemy.transform.position, enemy.player.transform.position) <= enemy.minDistance)
+        {
+            enemy.ChangeState(enemy.activeState);
+        }
     }
 
     public override void ExitState(EnemyTemplate enemy)

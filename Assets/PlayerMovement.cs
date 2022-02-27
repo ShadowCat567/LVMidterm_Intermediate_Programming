@@ -12,11 +12,12 @@ public class PlayerMovement : MonoBehaviour
 
     int curHealth;
     int maxHealthPlayer = 3;
-    bool playerKilled = false;
+    bool playerKilled;
     //for displaying player health I think I want to figure out a heart containter system, so I'll research that and inventory tomorrow
 
     private void Awake()
     {
+        playerKilled = false;
         rb = GetComponent<Rigidbody2D>();
         curHealth = maxHealthPlayer;
     }
@@ -40,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void PlayerControls()
-    {
+    { 
         moveX = Input.GetAxis("Horizontal");
         moveY = Input.GetAxis("Vertical");
     }

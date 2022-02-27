@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyTemplate : MonoBehaviour
 {
-    protected float enemyVelo = 2.0f;
+    //variables that need to be public should be move to getters and setters
+    public float enemyVelo = 2.0f;
     protected float enemyFireRate = 1.0f;
-    protected float alertRange;
+    public float minDistance = 15.0f;
+    public float maxDistance = 20.0f;
     protected Vector3 playerPos;
     protected int curHealth;
-    protected bool isRanged;
+    public bool isRanged;
+    public GameObject player;
 
-    EnemyBaseState curState;
+    protected EnemyBaseState curState;
     public EnemyIdleState idleState = new EnemyIdleState();
     public EnemyActiveState activeState = new EnemyActiveState();
 
@@ -30,9 +34,11 @@ public class EnemyTemplate : MonoBehaviour
         }
     }
 
+
     private void Awake()
     {
-        ChangeState(idleState);
+        player = GameObject.Find("Player");
+       // ChangeState(idleState);
     }
 
     // Start is called before the first frame update
@@ -44,6 +50,6 @@ public class EnemyTemplate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        curState.UpdateState(this);
+        //curState.UpdateState(this);
     }
 }
