@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class PlayerProjSpawner : MonoBehaviour
 {
-    [SerializeField] BoxCollider2D playerBc;
     [SerializeField] GameObject player;
     [SerializeField] GameObject projectile;
     List<GameObject> projList = new List<GameObject>();
     int numProjectile = 15;
     Vector3 spawnPos;
-    public Vector3 mousePos;
 
     private void Awake()
     {
-        playerBc = GetComponent<BoxCollider2D>();
         spawnPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 

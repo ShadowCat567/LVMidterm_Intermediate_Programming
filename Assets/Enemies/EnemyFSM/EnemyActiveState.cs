@@ -24,7 +24,7 @@ public class EnemyActiveState : EnemyBaseState
 
         else
         {
-            //fire projectile
+            enemy.GetComponent<EnemyProjSpawner>().enabled = true;
         }
     }
 
