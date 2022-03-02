@@ -7,7 +7,7 @@ public class PlayerProjSpawner : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject projectile;
     List<GameObject> projList = new List<GameObject>();
-    int numProjectile = 15;
+    int numProjectile = 5;
     Vector3 spawnPos;
 
     private void Awake()

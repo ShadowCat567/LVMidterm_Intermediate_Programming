@@ -5,10 +5,13 @@ using UnityEngine;
 public class ChargingEnemy : EnemyTemplate
 {
     int maxHealthCharging = 2;
-    //[SerializeField] GameObject droppedItem;
+    [SerializeField] GameObject droppedItem;
+    Vector3 droppedPos;
+
 
     private void Awake()
     {
+        player = GameObject.Find("Player");
         curHealth = maxHealthCharging;
         isRanged = false;
     }
@@ -23,5 +26,20 @@ public class ChargingEnemy : EnemyTemplate
     void Update()
     {
         curState.UpdateState(this);
+
+        if (curHealth <= 0)
+        {
+            droppedItem.SetActive(true);
+            droppedPos = enemy.transform.position;
+            droppedItem.transform.position = droppedPos;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.GetComponent<PlayerProjBeh>())
+        {
+            curHealth -= 1;
+        }
     }
 }

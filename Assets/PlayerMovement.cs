@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     int curHealth;
     int maxHealthPlayer = 3;
-    bool playerKilled;
+    private bool playerKilled;
     //for displaying player health I think I want to figure out a heart containter system, so I'll research that and inventory tomorrow
 
     private void Awake()
@@ -33,6 +33,11 @@ public class PlayerMovement : MonoBehaviour
     {
         PlayerControls();
         IsPlayerAlive();
+
+        if(playerKilled == true)
+        {
+            //end game
+        }
     }
 
     private void FixedUpdate()
@@ -56,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.GetComponent<ChargingEnemy>())
+        if(collision.gameObject.GetComponent<ChargingEnemy>() || collision.gameObject.GetComponent<EnemyProjBeh>())
         {
             curHealth -= 1;
         }

@@ -7,13 +7,22 @@ public class EnemyTemplate : MonoBehaviour
 {
     //variables that need to be public should be move to getters and setters
     public float enemyVelo = 2.0f;
-    protected float enemyFireRate = 1.0f;
-    public float minDistance = 15.0f;
-    public float maxDistance = 20.0f;
+    public float minChaseDistance = 15.0f;
+    public float maxChaseDistance = 20.0f;
+    public float minFireDistance = 10.0f;
+    public float maxFireDistance = 12.0f;
     protected Vector3 playerPos;
-    protected int curHealth;
+    public int curHealth;
     public bool isRanged;
-    public GameObject player;
+    [System.NonSerialized] public GameObject player;
+
+    [SerializeField] public GameObject enemy;
+    [SerializeField] protected GameObject enemyProjectile;
+    public List<GameObject> enemyProjLst = new List<GameObject>();
+    public int numEnemyProj = 3;
+    public Vector3 spawnPos;
+    public float timeBetwnSpawns = 1.0f;
+    public float spawnTimer;
 
     protected EnemyBaseState curState;
     public EnemyIdleState idleState = new EnemyIdleState();
@@ -34,11 +43,9 @@ public class EnemyTemplate : MonoBehaviour
         }
     }
 
-
     private void Awake()
     {
         player = GameObject.Find("Player");
-       // ChangeState(idleState);
     }
 
     // Start is called before the first frame update
@@ -50,6 +57,6 @@ public class EnemyTemplate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //curState.UpdateState(this);
+
     }
 }

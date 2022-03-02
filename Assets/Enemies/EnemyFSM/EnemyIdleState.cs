@@ -11,12 +11,12 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void UpdateState(EnemyTemplate enemy)
     {
-        if(enemy.isRanged)
+        if (!enemy.isRanged && Vector3.Distance(enemy.transform.position, enemy.player.transform.position) <= enemy.minChaseDistance)
         {
-            enemy.GetComponent<EnemyProjSpawner>().enabled = false;
+            enemy.ChangeState(enemy.activeState);
         }
-
-        if (Vector3.Distance(enemy.transform.position, enemy.player.transform.position) <= enemy.minDistance)
+        
+        else if(enemy.isRanged && Vector3.Distance(enemy.transform.position, enemy.player.transform.position) <= enemy.minFireDistance)
         {
             enemy.ChangeState(enemy.activeState);
         }
