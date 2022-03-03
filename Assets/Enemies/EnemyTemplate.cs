@@ -7,10 +7,10 @@ public class EnemyTemplate : MonoBehaviour
 {
     //variables that need to be public should be move to getters and setters
     public float enemyVelo = 2.0f;
-    public float minChaseDistance = 15.0f;
-    public float maxChaseDistance = 20.0f;
-    public float minFireDistance = 10.0f;
-    public float maxFireDistance = 12.0f;
+    public float minChaseDistance = 8.0f;
+    public float maxChaseDistance = 10.0f;
+    public float minFireDistance = 5.0f;
+    public float maxFireDistance = 8.0f;
     protected Vector3 playerPos;
     public int curHealth;
     public bool isRanged;

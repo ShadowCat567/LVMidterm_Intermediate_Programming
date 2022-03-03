@@ -5,7 +5,7 @@ using UnityEngine;
 public class Drops : MonoBehaviour
 {
     [SerializeField] protected GameObject dropObject;
-    protected string dropType;
+    public string dropType;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

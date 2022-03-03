@@ -253,6 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropObject: {fileID: 159819324}
+  dropType: 
 --- !u!1 &315132575
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,7 +444,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6798d91b24369541932b8ab6c58529a, type: 3}
   m_Name: 
@@ -703,6 +704,14 @@ PrefabInstance:
       propertyPath: enemyProjectile
       value: 
       objectReference: {fileID: 142810185145467944, guid: bdbdc25df9b7a1040b514d5a30a4a4fb, type: 3}
+    - target: {fileID: 4768867545980174902, guid: 0e713dda6cc4a9b4999f61bcace1246e, type: 3}
+      propertyPath: maxChaseDistance
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768867545980174902, guid: 0e713dda6cc4a9b4999f61bcace1246e, type: 3}
+      propertyPath: minChaseDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4768867545980174903, guid: 0e713dda6cc4a9b4999f61bcace1246e, type: 3}
       propertyPath: m_Name
       value: EnemyCharging
@@ -812,6 +821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropObject: {fileID: 2053534248}
+  dropType: 
 --- !u!1 &2071948710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1032,5 +1042,13 @@ PrefabInstance:
       propertyPath: droppedItem
       value: 
       objectReference: {fileID: 95141508}
+    - target: {fileID: 9127727396687071738, guid: a35c30e4b9662bb499e7d0640b24c24f, type: 3}
+      propertyPath: maxFireDistance
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9127727396687071738, guid: a35c30e4b9662bb499e7d0640b24c24f, type: 3}
+      propertyPath: minFireDistance
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a35c30e4b9662bb499e7d0640b24c24f, type: 3}

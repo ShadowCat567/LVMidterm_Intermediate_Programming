@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     private bool playerKilled;
     //for displaying player health I think I want to figure out a heart containter system, so I'll research that and inventory tomorrow
 
+    [SerializeField] Dictionary<string, int> inventory = new Dictionary<string, int>();
+
     private void Awake()
     {
         playerKilled = false;
@@ -64,6 +66,26 @@ public class PlayerMovement : MonoBehaviour
         if(collision.gameObject.GetComponent<ChargingEnemy>() || collision.gameObject.GetComponent<EnemyProjBeh>())
         {
             curHealth -= 1;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.GetComponent<Drops>())
+        {
+            if(inventory.ContainsKey(collision.gameObject.GetComponent<Drops>().dropType))
+            {
+                inventory[collision.gameObject.GetComponent<Drops>().dropType] += 1;
+            }
+            else
+            {
+                inventory.Add(collision.gameObject.GetComponent<Drops>().dropType, 1);
+            }
+
+            foreach(KeyValuePair<string, int> item in inventory)
+            {
+                Debug.Log("Key: " + item.Key + ", Value: " + item.Value);
+            }
         }
     }
 }

@@ -19,6 +19,7 @@ public class ChargingEnemy : EnemyTemplate
     // Start is called before the first frame update
     void Start()
     {
+        //needs to spawn its own drop object/item that is added as its drop object/item
         ChangeState(idleState);
     }
 
