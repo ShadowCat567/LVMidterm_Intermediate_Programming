@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     int curHealth;
     int maxHealthPlayer = 3;
     private bool playerKilled;
+    [SerializeField] Image [] healthArr = new Image[3];
     //for displaying player health I think I want to figure out a heart containter system, so I'll research that and inventory tomorrow
 
     [SerializeField] Dictionary<string, int> inventory = new Dictionary<string, int>();
@@ -66,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
         if(collision.gameObject.GetComponent<ChargingEnemy>() || collision.gameObject.GetComponent<EnemyProjBeh>())
         {
             curHealth -= 1;
+            healthArr[curHealth].enabled = false;
         }
     }
 

@@ -7,7 +7,7 @@ public class ShootingEnemyDrop : Drops
 
     private void Awake()
     {
-        dropType = "fireball";
+        dropType = "Fireball";
     }
 
     // Start is called before the first frame update

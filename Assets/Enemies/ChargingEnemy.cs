@@ -7,7 +7,7 @@ public class ChargingEnemy : EnemyTemplate
     int maxHealthCharging = 2;
     [SerializeField] GameObject droppedItem;
     Vector3 droppedPos;
-
+    GameObject spawnDrop;
 
     private void Awake()
     {
@@ -19,7 +19,9 @@ public class ChargingEnemy : EnemyTemplate
     // Start is called before the first frame update
     void Start()
     {
-        //needs to spawn its own drop object/item that is added as its drop object/item
+        spawnDrop = Instantiate(droppedItem, enemy.transform.position, Quaternion.identity);
+        spawnDrop.SetActive(false);
+
         ChangeState(idleState);
     }
 
@@ -30,9 +32,11 @@ public class ChargingEnemy : EnemyTemplate
 
         if (curHealth <= 0)
         {
-            droppedItem.SetActive(true);
+            enemy.SetActive(false);
+            spawnDrop.SetActive(true);
             droppedPos = enemy.transform.position;
-            droppedItem.transform.position = droppedPos;
+            spawnDrop.transform.position = droppedPos;
+            curHealth = maxHealthCharging;
         }
     }
 

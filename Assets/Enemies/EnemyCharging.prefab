@@ -99,10 +99,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyVelo: 2
-  minDistance: 5
-  maxDistance: 8
+  minChaseDistance: 8
+  maxChaseDistance: 10
+  minFireDistance: 5
+  maxFireDistance: 8
+  curHealth: 0
   isRanged: 0
-  player: {fileID: 0}
+  enemy: {fileID: 4768867545980174903}
+  enemyProjectile: {fileID: 142810185145467944, guid: bdbdc25df9b7a1040b514d5a30a4a4fb, type: 3}
+  enemyProjLst: []
+  numEnemyProj: 3
+  spawnPos: {x: 0, y: 0, z: 0}
+  timeBetwnSpawns: 1
+  spawnTimer: 0
+  droppedItem: {fileID: 1267402593637277500, guid: 8caa7ad89987027499a384d1f81b8116, type: 3}
 --- !u!61 &4768867545980174899
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3683128130616283493}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.15, y: 3.94, z: 0}
+  m_LocalPosition: {x: -1.95, y: 6.4, z: 0}
   m_LocalScale: {x: 0.8, y: 0.4375, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropObject: {fileID: 3683128130616283493}
+  dropType: 
 --- !u!61 &1356768062322988958
 BoxCollider2D:
   m_ObjectHideFlags: 0

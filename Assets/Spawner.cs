@@ -5,11 +5,10 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] GameObject objectToSpawn;
-    [SerializeField] GameObject dropObjToSpawn;
     int numObjects = 3;
     [SerializeField] List<GameObject> ObjLst = new List<GameObject>();
 
-    float secBetwnSpawn = 3.0f;
+    float secBetwnSpawn = 8.0f;
     float spawnTimer;
 
     Vector3 spawnPos1;
@@ -54,11 +53,27 @@ public class Spawner : MonoBehaviour
             {
                 spawnTimer += secBetwnSpawn;
 
-                foreach(GameObject obj in ObjLst)
+                for(int i = 0; i < ObjLst.Count; i ++)
                 {
-                    if(obj.activeSelf == false)
+                    if(ObjLst[i].activeSelf == false)
                     {
-                        //figure out what position it is in in the list and based off position, change the spawn poss
+                        if(i == 0)
+                        {
+                            ObjLst[i].transform.position = spawnPos1;
+                        }
+
+                        else if(i== 1)
+                        {
+                            ObjLst[i].transform.position = spawnPos2;
+                        }
+
+                        else
+                        {
+                            ObjLst[i].transform.position = spawnPos3;
+                        }
+                        
+                        ObjLst[i].SetActive(true);
+                        break;
                     }
                 }
             }

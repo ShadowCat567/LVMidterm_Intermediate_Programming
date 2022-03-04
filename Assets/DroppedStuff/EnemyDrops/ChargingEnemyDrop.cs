@@ -6,7 +6,7 @@ public class ChargingEnemyDrop : Drops
 {
     private void Awake()
     {
-        dropType = "sharp bones";
+        dropType = "Corrosive Flesh";
     }
 
     // Start is called before the first frame update

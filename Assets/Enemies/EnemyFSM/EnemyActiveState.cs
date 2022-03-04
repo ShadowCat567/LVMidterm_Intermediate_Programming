@@ -47,11 +47,6 @@ public class EnemyActiveState : EnemyBaseState
                 }
             }
         }
-
-        if(enemy.curHealth <= 0)
-        {
-            enemy.enemy.SetActive(false);
-        }
     }
 
     public override void ExitState(EnemyTemplate enemy)
