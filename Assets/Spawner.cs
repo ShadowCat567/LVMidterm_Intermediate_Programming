@@ -49,30 +49,16 @@ public class Spawner : MonoBehaviour
         {
             spawnTimer -= Time.deltaTime;
 
-            while(spawnTimer < 0.0f)
+            while (spawnTimer < 0)
             {
                 spawnTimer += secBetwnSpawn;
 
-                for(int i = 0; i < ObjLst.Count; i ++)
+                foreach (GameObject obj in ObjLst)
                 {
-                    if(ObjLst[i].activeSelf == false)
+                    if (obj.activeSelf == false)
                     {
-                        if(i == 0)
-                        {
-                            ObjLst[i].transform.position = spawnPos1;
-                        }
-
-                        else if(i== 1)
-                        {
-                            ObjLst[i].transform.position = spawnPos2;
-                        }
-
-                        else
-                        {
-                            ObjLst[i].transform.position = spawnPos3;
-                        }
-                        
-                        ObjLst[i].SetActive(true);
+                        obj.transform.position = transform.position;
+                        obj.SetActive(true);
                         break;
                     }
                 }
