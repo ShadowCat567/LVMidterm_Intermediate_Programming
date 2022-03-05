@@ -6,7 +6,6 @@ public class Moonstone : PlantsTemplate
 {
     [SerializeField] GameObject moonstone;
     int curMoonstonehealth;
-    GameObject spawnMSdrop;
 
     private void Awake()
     {
@@ -15,8 +14,12 @@ public class Moonstone : PlantsTemplate
 
     private void Start()
     {
-        spawnMSdrop = Instantiate(droppedObject, transform.position, Quaternion.identity);
-        spawnMSdrop.SetActive(false);
+        for (int i = 0; i < numOfDrops; i++)
+        {
+            GameObject newDrop = Instantiate(droppedObject, transform.position, Quaternion.identity);
+            newDrop.SetActive(false);
+            dropItemLst.Add(newDrop);
+        }
     }
 
     // Update is called once per frame
@@ -25,9 +28,18 @@ public class Moonstone : PlantsTemplate
         if (curMoonstonehealth <= 0)
         {
             moonstone.SetActive(false);
-            spawnMSdrop.SetActive(true);
-            dropPositon = transform.position;
-            spawnMSdrop.transform.position = dropPositon;
+
+            foreach (GameObject dropItem in dropItemLst)
+            {
+                if (dropItem.activeSelf == false)
+                {
+                    dropItem.SetActive(true);
+                    dropPositon = transform.position;
+                    dropItem.transform.position = dropPositon;
+                    break;
+                }
+            }
+
             curMoonstonehealth = plantHealth;
         }
     }

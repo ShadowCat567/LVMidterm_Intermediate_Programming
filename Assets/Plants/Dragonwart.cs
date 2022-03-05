@@ -6,7 +6,6 @@ public class Dragonwart : PlantsTemplate
 {
     [SerializeField] GameObject dragonwart;
     int curDragonHealth;
-    GameObject spawnDRdrop;
 
     private void Awake()
     {
@@ -15,8 +14,12 @@ public class Dragonwart : PlantsTemplate
 
     private void Start()
     {
-        spawnDRdrop = Instantiate(droppedObject, transform.position, Quaternion.identity);
-        spawnDRdrop.SetActive(false);
+        for (int i = 0; i < numOfDrops; i++)
+        {
+            GameObject newDrop = Instantiate(droppedObject, transform.position, Quaternion.identity);
+            newDrop.SetActive(false);
+            dropItemLst.Add(newDrop);
+        }
     }
 
     // Update is called once per frame
@@ -25,9 +28,18 @@ public class Dragonwart : PlantsTemplate
         if (curDragonHealth <= 0)
         {
             dragonwart.SetActive(false);
-            spawnDRdrop.SetActive(true);
-            dropPositon = transform.position;
-            spawnDRdrop.transform.position = dropPositon;
+
+            foreach (GameObject dropItem in dropItemLst)
+            {
+                if (dropItem.activeSelf == false)
+                {
+                    dropItem.SetActive(true);
+                    dropPositon = transform.position;
+                    dropItem.transform.position = dropPositon;
+                    break;
+                }
+            }
+
             curDragonHealth = plantHealth;
         }
     }

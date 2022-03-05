@@ -15,9 +15,9 @@ public class PlayerMovement : MonoBehaviour
     int maxHealthPlayer = 3;
     private bool playerKilled;
     [SerializeField] Image [] healthArr = new Image[3];
-    //for displaying player health I think I want to figure out a heart containter system, so I'll research that and inventory tomorrow
 
     [SerializeField] Dictionary<string, int> inventory = new Dictionary<string, int>();
+    List<string> recepieLst = new List<string>();
 
     private void Awake()
     {
@@ -89,6 +89,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("Key: " + item.Key + ", Value: " + item.Value);
             }
+        }
+
+        if(collision.gameObject.GetComponent<RecepiePiecesBase>())
+        {
+            recepieLst.Add(collision.gameObject.GetComponent<RecepiePiecesBase>().recepieFragmentText);
         }
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class ShootingEnemy : EnemyTemplate
 {
     [SerializeField] GameObject droppedItem;
-    GameObject spawnDrop;
     Vector3 droppedPos;
     int maxHealthShooting = 1;
 
@@ -22,8 +21,12 @@ public class ShootingEnemy : EnemyTemplate
     {
         ChangeState(idleState);
 
-        spawnDrop = Instantiate(droppedItem, enemy.transform.position, Quaternion.identity);
-        spawnDrop.SetActive(false);
+        for (int j = 0; j < dropNum; j++)
+        {
+            GameObject spawnDrop = Instantiate(droppedItem, enemy.transform.position, Quaternion.identity);
+            spawnDrop.SetActive(false);
+            dropObjLst.Add(spawnDrop);
+        }
 
         for (int i = 0; i < numEnemyProj; i++)
         {
@@ -41,9 +44,18 @@ public class ShootingEnemy : EnemyTemplate
         if (curHealth <= 0)
         {
             enemy.SetActive(false);
-            spawnDrop.SetActive(true);
-            droppedPos = enemy.transform.position;
-            spawnDrop.transform.position = droppedPos;
+
+            foreach (GameObject dropItem in dropObjLst)
+            {
+                if (dropItem.activeSelf == false)
+                {
+                    dropItem.SetActive(true);
+                    droppedPos = enemy.transform.position;
+                    dropItem.transform.position = droppedPos;
+                    break;
+                }
+            }
+            
             curHealth = maxHealthShooting;
         }
     }

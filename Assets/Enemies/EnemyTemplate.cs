@@ -23,6 +23,8 @@ public class EnemyTemplate : MonoBehaviour
     public Vector3 spawnPos;
     public float timeBetwnSpawns = 1.0f;
     public float spawnTimer;
+    protected int dropNum = 2;
+    protected List<GameObject> dropObjLst = new List<GameObject>();
 
     protected EnemyBaseState curState;
     public EnemyIdleState idleState = new EnemyIdleState();

@@ -6,7 +6,6 @@ public class Nightlock : PlantsTemplate
 {
     [SerializeField] GameObject nightlock;
     int curnightlockhealth;
-    GameObject spawnNLdrop;
 
     private void Awake()
     {
@@ -15,8 +14,12 @@ public class Nightlock : PlantsTemplate
 
     private void Start()
     {
-        spawnNLdrop = Instantiate(droppedObject, transform.position, Quaternion.identity);
-        spawnNLdrop.SetActive(false);
+        for (int i = 0; i < numOfDrops; i++)
+        {
+            GameObject newDrop = Instantiate(droppedObject, transform.position, Quaternion.identity);
+            newDrop.SetActive(false);
+            dropItemLst.Add(newDrop);
+        }
     }
 
     // Update is called once per frame
@@ -25,9 +28,18 @@ public class Nightlock : PlantsTemplate
         if (curnightlockhealth <= 0)
         {
             nightlock.SetActive(false);
-            spawnNLdrop.SetActive(true);
-            dropPositon = transform.position;
-            spawnNLdrop.transform.position = dropPositon;
+
+            foreach (GameObject dropItem in dropItemLst)
+            {
+                if (dropItem.activeSelf == false)
+                {
+                    dropItem.SetActive(true);
+                    dropPositon = transform.position;
+                    dropItem.transform.position = dropPositon;
+                    break;
+                }
+            }
+
             curnightlockhealth = plantHealth;
         }
     }

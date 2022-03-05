@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
     int numObjects = 3;
     [SerializeField] List<GameObject> ObjLst = new List<GameObject>();
 
-    float secBetwnSpawn = 8.0f;
+    [SerializeField] float secBetwnSpawn = 8.0f;
     float spawnTimer;
 
     Vector3 spawnPos1;
