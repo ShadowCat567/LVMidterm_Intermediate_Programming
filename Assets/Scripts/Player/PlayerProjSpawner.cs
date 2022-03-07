@@ -35,8 +35,8 @@ public class PlayerProjSpawner : MonoBehaviour
             {
                 if(proj.activeSelf == false)
                 {
-                    //this help a bit with figuring out how to set direction: https://stackoverflow.com/questions/47589876/shooting-a-projectile-towards-mouse-location-in-unity
-                    proj.GetComponent<PlayerProjBeh>().direction = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    //this help a bit with figuring out how to set direction: https://answers.unity.com/questions/736511/shoot-towards-mouse-in-unity2d.html
+                    proj.GetComponent<PlayerProjBeh>().direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
                     spawnPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
                     proj.transform.position = spawnPos;
                     proj.SetActive(true);

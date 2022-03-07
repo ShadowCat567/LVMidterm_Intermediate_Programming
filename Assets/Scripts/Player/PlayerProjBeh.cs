@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class PlayerProjBeh : MonoBehaviour
 {
-    float velocity = 5.0f;
+    float velocity = 30.0f;
     [SerializeField] GameObject projectile;
     float lifetime = 0.5f;
     public Vector2 direction;
+    Rigidbody2D rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-       // transform.position = Vector2.MoveTowards(projectile.transform.position, spawner.GetComponent<PlayerProjSpawner>().mousePos, velocity * Time.deltaTime);
-        transform.Translate(direction * Time.deltaTime * velocity);
         StartCoroutine(KillProjectile(lifetime));
+    }
+
+    private void LateUpdate()
+    {
+        rb.velocity = direction * velocity;
     }
 
     IEnumerator KillProjectile(float projLifetime)

@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             InventoryPanel.SetActive(true);
-            recepieCounterTxt.text = "Recepie Fragments: ( " + recepieLst.Count + "/ 5)";
+            recepieCounterTxt.text = "Recepie Fragments: ( " + recepieLst.Count + " / 5 )";
 
             Quicksort(inventoryLst, 0, inventoryLst.Count - 1);
             Quicksort(recepieLst, 0, recepieLst.Count - 1);
