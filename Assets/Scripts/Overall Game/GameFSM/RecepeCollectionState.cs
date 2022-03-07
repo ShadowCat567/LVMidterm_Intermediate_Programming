@@ -10,6 +10,7 @@ public class RecepeCollectionState : BaseGameState
         manager.playerUI.SetActive(true);
         manager.witchHut.SetActive(true);
         manager.recepeEnemies.SetActive(true);
+        manager.witchDialog.SetActive(true);
         manager.objectiveText.text = "OBJECTIVE: Collect the missing recepe fragments";
     }
 

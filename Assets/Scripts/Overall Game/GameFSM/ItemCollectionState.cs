@@ -25,6 +25,7 @@ public class ItemCollectionState : BaseGameState
         manager.witchHut.SetActive(false);
         manager.recepeEnemies.SetActive(false);
         manager.itemCollectionSpawners.SetActive(false);
+        manager.witchDialog.SetActive(false);
         manager.objectiveText.text = "";
     }
 }

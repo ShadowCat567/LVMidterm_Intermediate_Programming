@@ -5,7 +5,7 @@ using TMPro;
 
 public class GameController : MonoBehaviour
 {
-    BaseGameState curstate;
+    public BaseGameState curstate;
     public StartGameState startState = new StartGameState();
     public RecepeCollectionState recepeCollState = new RecepeCollectionState();
     public ItemCollectionState itemCollState = new ItemCollectionState();
@@ -26,6 +26,7 @@ public class GameController : MonoBehaviour
     public TMP_Text objectiveText;
     public GameObject witchHut;
     public GameObject playerUI;
+    public GameObject witchDialog;
 
     //variables related to the end state
     [Header("Game End")]
@@ -54,6 +55,7 @@ public class GameController : MonoBehaviour
         recepeEnemies.SetActive(false);
         itemCollectionSpawners.SetActive(false);
         witchHut.SetActive(false);
+        witchDialog.SetActive(false);
         playerUI.SetActive(false);
         objectiveText.text = "";
 

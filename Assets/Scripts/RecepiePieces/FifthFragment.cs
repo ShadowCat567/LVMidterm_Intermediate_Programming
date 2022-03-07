@@ -6,7 +6,7 @@ public class FifthFragment : RecepiePiecesBase
 {
     private void Awake()
     {
-        recepieFragmentText = "5. Finally, crush 4 MOONSTONE and sprinkle it into the mixture as it cools.";
+        recepieFragmentText = "5. Finally, crush 7 MOONSTONE and sprinkle it into the mixture as it cools.";
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

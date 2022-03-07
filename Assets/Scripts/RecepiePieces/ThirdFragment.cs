@@ -6,7 +6,7 @@ public class ThirdFragment : RecepiePiecesBase
 {
     private void Awake()
     {
-        recepieFragmentText = "3. Carefully dice 2 NIGHTLOCK and add to the cauldron.";
+        recepieFragmentText = "3. Carefully dice 5 NIGHTLOCK and add to the cauldron.";
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

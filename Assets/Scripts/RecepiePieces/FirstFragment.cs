@@ -6,7 +6,7 @@ public class FirstFragment : RecepiePiecesBase
 {
     private void Awake()
     {
-        recepieFragmentText = "1. Boil 5 CORROSIVE FLESH in a cauldron";
+        recepieFragmentText = "1. Boil 8 CORROSIVE FLESH in a cauldron";
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

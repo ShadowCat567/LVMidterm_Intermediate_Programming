@@ -6,7 +6,7 @@ public class FourthFragment : RecepiePiecesBase
 {
     private void Awake()
     {
-        recepieFragmentText = "4. Crush 3 DRAGONWART then add it to the cauldron";
+        recepieFragmentText = "4. Crush 6 DRAGONWART then add it to the cauldron";
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

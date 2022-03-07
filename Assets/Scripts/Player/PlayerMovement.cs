@@ -39,9 +39,14 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         InventoryPanel.SetActive(false);
-        recepieCounterTxt.text = "Recepie Fragments: ( " + recepieLst.Count + "/ 5)";
+        recepieCounterTxt.text = "Recipe Fragments: ( " + recepieLst.Count + "/ 5)";
         recepieItemTxt.text = "";
         inventoryText.text = "";
+        inventory.Add("Fireball", 0);
+        inventory.Add("Nightshade", 0);
+        inventory.Add("Corrosive Flesh", 0);
+        inventory.Add("Moonstone", 0);
+        inventory.Add("Dragonwort", 0);
     }
 
     // Update is called once per frame
@@ -60,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             InventoryPanel.SetActive(true);
-            recepieCounterTxt.text = "Recepie Fragments: ( " + recepieLst.Count + " / 5 )";
+            recepieCounterTxt.text = "Recipe Fragments: ( " + recepieLst.Count + " / 5 )";
 
             Quicksort(inventoryLst, 0, inventoryLst.Count - 1);
             Quicksort(recepieLst, 0, recepieLst.Count - 1);
@@ -179,14 +184,7 @@ public class PlayerMovement : MonoBehaviour
         if(collision.gameObject.GetComponent<Drops>())
         {
             string drop = collision.gameObject.GetComponent<Drops>().dropType;
-            if (inventory.ContainsKey(drop))
-            {
-                inventory[drop] += 1;
-            }
-            else
-            {
-                inventory.Add(drop, 1);
-            }
+            inventory[drop] += 1;
         }
 
         if(collision.gameObject.GetComponent<RecepiePiecesBase>())
