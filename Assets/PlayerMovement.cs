@@ -14,11 +14,13 @@ public class PlayerMovement : MonoBehaviour
 
     int curHealth;
     int maxHealthPlayer = 3;
-    private bool playerKilled;
+    public bool playerKilled;
     [SerializeField] Image [] healthArr = new Image[3];
 
-    [SerializeField] Dictionary<string, int> inventory = new Dictionary<string, int>();
-    List<string> recepieLst = new List<string>();
+    public Dictionary<string, int> inventory = new Dictionary<string, int>();
+    public List<string> recepieLst = new List<string>();
+    [SerializeField] List<string> inventoryLst = new List<string>();
+    bool addToInventory = false;
 
     [SerializeField] GameObject InventoryPanel;
     [SerializeField] TMP_Text recepieCounterTxt;
@@ -47,31 +49,30 @@ public class PlayerMovement : MonoBehaviour
         PlayerControls();
         IsPlayerAlive();
 
-        if(playerKilled == true)
-        {
-            //end game
-        }
-
         if(Input.GetKey(KeyCode.Tab))
         {
+            //Used this to help make sure PopulateInventory() can only be called once: https://answers.unity.com/questions/155111/calling-a-function-only-once-in-update.html
+            if (addToInventory == false)
+            {
+                addToInventory = true;
+                PopulateInventory();
+            }
+
             InventoryPanel.SetActive(true);
             recepieCounterTxt.text = "Recepie Fragments: ( " + recepieLst.Count + "/ 5)";
 
+            Quicksort(inventoryLst, 0, inventoryLst.Count - 1);
             Quicksort(recepieLst, 0, recepieLst.Count - 1);
 
+            inventoryText.text = string.Join("\n", inventoryLst);
             recepieItemTxt.text = string.Join("\n", recepieLst);
-            
-            foreach (KeyValuePair<string, int> item in inventory)
-            {
-                inventoryText.text = item.Key + " : " + item.Value + "\n";
-            }
-            //sort dictionary and recepie list 
-            //display updated recepie and inventory 
         }
         
         else
         {
             InventoryPanel.SetActive(false);
+            inventoryLst.Clear();
+            addToInventory = false;
         }
     }
 
@@ -92,6 +93,14 @@ public class PlayerMovement : MonoBehaviour
         {
             playerKilled = true;
         }
+    }
+
+    public void Respawn()
+    {
+        recepieLst.Clear();
+        inventory.Clear();
+        curHealth = maxHealthPlayer;
+        playerKilled = false;
     }
 
     //Used this to help figure out quicksort: https://www.geeksforgeeks.org/quick-sort/
@@ -137,6 +146,14 @@ public class PlayerMovement : MonoBehaviour
         return (i + 1);
     }
 
+    void PopulateInventory()
+    {
+        foreach (KeyValuePair<string, int> item in inventory)
+        {
+            inventoryLst.Add(item.Key + " : " + item.Value);
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.GetComponent<ChargingEnemy>() || collision.gameObject.GetComponent<EnemyProjBeh>())
@@ -150,18 +167,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<Drops>())
         {
-            if(inventory.ContainsKey(collision.gameObject.GetComponent<Drops>().dropType))
+            string drop = collision.gameObject.GetComponent<Drops>().dropType;
+            if (inventory.ContainsKey(drop))
             {
-                inventory[collision.gameObject.GetComponent<Drops>().dropType] += 1;
+                inventory[drop] += 1;
             }
             else
             {
-                inventory.Add(collision.gameObject.GetComponent<Drops>().dropType, 1);
-            }
-
-            foreach(KeyValuePair<string, int> item in inventory)
-            {
-                Debug.Log("Key: " + item.Key + ", Value: " + item.Value);
+                inventory.Add(drop, 1);
             }
         }
 

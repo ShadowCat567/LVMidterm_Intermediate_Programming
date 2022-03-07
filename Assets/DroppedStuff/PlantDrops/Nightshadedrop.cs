@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Nightlockdrop : Drops
+public class Nightshadedrop : Drops
 {
     private void Awake()
     {
-        dropType = "Nightlock";
+        dropType = "Nightshade";
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

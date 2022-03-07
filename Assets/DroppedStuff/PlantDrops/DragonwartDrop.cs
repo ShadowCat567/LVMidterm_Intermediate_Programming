@@ -6,7 +6,7 @@ public class DragonwartDrop : Drops
 {
     private void Awake()
     {
-        dropType = "Dragonwart";
+        dropType = "Dragonwort";
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

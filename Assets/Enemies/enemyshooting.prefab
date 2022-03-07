@@ -127,8 +127,8 @@ MonoBehaviour:
   enemyVelo: 2
   minChaseDistance: 15
   maxChaseDistance: 20
-  minFireDistance: 12
-  maxFireDistance: 15
+  minFireDistance: 4
+  maxFireDistance: 5
   curHealth: 0
   isRanged: 1
   enemy: {fileID: 9127727396687071732}

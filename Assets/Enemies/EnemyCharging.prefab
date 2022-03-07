@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyVelo: 2
-  minChaseDistance: 8
-  maxChaseDistance: 10
+  minChaseDistance: 6
+  maxChaseDistance: 8
   minFireDistance: 5
   maxFireDistance: 8
   curHealth: 0
