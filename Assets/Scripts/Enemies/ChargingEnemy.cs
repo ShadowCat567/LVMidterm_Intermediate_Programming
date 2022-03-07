@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class ChargingEnemy : EnemyTemplate
 {
+    //sets its max health
     public int maxHealthCharging = 2;
+    //item it drops
     [SerializeField] GameObject droppedItem;
+    //position is spawns item in
     Vector3 droppedPos;
 
     private void Awake()
     {
+        //finds player
         player = GameObject.Find("Player");
+        //sets current health
         curHealth = maxHealthCharging;
+        //this is not a ranged enemy
         isRanged = false;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        //adds drops to their object pool
         for (int i = 0; i < dropNum; i++)
         {
             GameObject spawnDrop = Instantiate(droppedItem, enemy.transform.position, Quaternion.identity);
@@ -25,6 +32,7 @@ public class ChargingEnemy : EnemyTemplate
             dropObjLst.Add(spawnDrop);
         }
 
+        //starts in idle state
         ChangeState(idleState);
     }
 
@@ -33,6 +41,7 @@ public class ChargingEnemy : EnemyTemplate
     {
         curState.UpdateState(this);
 
+        //handle's enemy's death and resets it to be respawned again
         if (curHealth <= 0)
         {
             enemy.SetActive(false);
@@ -54,6 +63,7 @@ public class ChargingEnemy : EnemyTemplate
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //if hit by player's projectile, lose 1 hit point
         if(collision.gameObject.GetComponent<PlayerProjBeh>())
         {
             curHealth -= 1;

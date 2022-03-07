@@ -8,21 +8,27 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
 
+    //sets variables related to movement
     float moveSpeed = 3.0f;
     float moveX;
     float moveY;
 
+    //sets variables related to health
     int curHealth;
     int maxHealthPlayer = 3;
     public bool playerKilled;
+    //holds images that display player health
     [SerializeField] Image [] healthArr = new Image[3];
+    //where player respawns after death
     [SerializeField] GameObject respwnPosition;
 
+    //variables related to what is in the player's inventory and how many recipe pieces they have
     public Dictionary<string, int> inventory = new Dictionary<string, int>();
     public List<string> recepieLst = new List<string>();
     [SerializeField] List<string> inventoryLst = new List<string>();
     bool addToInventory = false;
 
+    //displays the player's inventory
     [SerializeField] GameObject InventoryPanel;
     [SerializeField] TMP_Text recepieCounterTxt;
     [SerializeField] TMP_Text recepieItemTxt;
@@ -38,10 +44,12 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //sets up the text for the player's inventory
         InventoryPanel.SetActive(false);
         recepieCounterTxt.text = "Recipe Fragments: ( " + recepieLst.Count + "/ 5)";
         recepieItemTxt.text = "";
         inventoryText.text = "";
+        //adds items to the player's inventory and sets their number to 0
         inventory.Add("Fireball", 0);
         inventory.Add("Nightshade", 0);
         inventory.Add("Corrosive Flesh", 0);
@@ -57,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetKey(KeyCode.Tab))
         {
+            //when tab is pressed, sorts the inventory items and displays them for the player
             //Used this to help make sure PopulateInventory() can only be called once: https://answers.unity.com/questions/155111/calling-a-function-only-once-in-update.html
             if (addToInventory == false)
             {
@@ -65,17 +74,21 @@ public class PlayerMovement : MonoBehaviour
             }
 
             InventoryPanel.SetActive(true);
+            //displays how many recipe fragments have been collected
             recepieCounterTxt.text = "Recipe Fragments: ( " + recepieLst.Count + " / 5 )";
 
+            //sorts the inventory and recipe items
             Quicksort(inventoryLst, 0, inventoryLst.Count - 1);
             Quicksort(recepieLst, 0, recepieLst.Count - 1);
 
+            //displays the inventory and recipe items
             inventoryText.text = string.Join("\n", inventoryLst);
             recepieItemTxt.text = string.Join("\n", recepieLst);
         }
         
         else
         {
+            //sets inventory to inactive when tab is not being presssed
             InventoryPanel.SetActive(false);
             inventoryLst.Clear();
             addToInventory = false;
@@ -84,17 +97,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //moves the player
         rb.velocity = new Vector2(moveX * moveSpeed, moveY * moveSpeed);
     }
 
     void PlayerControls()
     { 
+        //controls for the player to move
         moveX = Input.GetAxis("Horizontal");
         moveY = Input.GetAxis("Vertical");
     }
 
     void IsPlayerAlive()
     {
+        //if player is dead, set playerKilled to true
         if (curHealth <= 0)
         {
             playerKilled = true;
@@ -103,6 +119,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Respawn()
     {
+        //reset variables for the player to be respawned
         recepieLst.Clear();
         inventory.Clear();
         curHealth = maxHealthPlayer;
@@ -113,6 +130,7 @@ public class PlayerMovement : MonoBehaviour
 
     void ResetHearts()
     {
+        //resets the display for player health
         for(int i = 0; i < healthArr.Length; i ++)
         {
             healthArr[i].enabled = true;
@@ -164,6 +182,7 @@ public class PlayerMovement : MonoBehaviour
 
     void PopulateInventory()
     {
+        //converts the inventory dictionary to a list to make displaying and sorting it easier
         foreach (KeyValuePair<string, int> item in inventory)
         {
             inventoryLst.Add(item.Key + " : " + item.Value);
@@ -172,6 +191,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //if the player collides with the charging enemy or the enemy's projectile, lose health and disable one of the health images
         if(collision.gameObject.GetComponent<ChargingEnemy>() || collision.gameObject.GetComponent<EnemyProjBeh>())
         {
             curHealth -= 1;
@@ -181,12 +201,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //if player collides with a drop, add it to player's inventory
         if(collision.gameObject.GetComponent<Drops>())
         {
             string drop = collision.gameObject.GetComponent<Drops>().dropType;
             inventory[drop] += 1;
         }
 
+        //if player collides with recipe item, add to inventory
         if(collision.gameObject.GetComponent<RecepiePiecesBase>())
         {
             recepieLst.Add(collision.gameObject.GetComponent<RecepiePiecesBase>().recepieFragmentText);

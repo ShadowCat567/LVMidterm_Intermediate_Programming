@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlayerProjSpawner : MonoBehaviour
 {
+    //sets varaibles related to player and its projectile
     [SerializeField] GameObject player;
     [SerializeField] GameObject projectile;
     List<GameObject> projList = new List<GameObject>();
     int numProjectile = 5;
+    //position projectiles spawn in
     Vector3 spawnPos;
 
     private void Awake()
@@ -18,6 +20,7 @@ public class PlayerProjSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //populates player's projectile list
         for(int i = 0; i < numProjectile; i ++)
         {
             GameObject newProjectile = Instantiate(projectile, spawnPos, Quaternion.identity);
@@ -31,6 +34,7 @@ public class PlayerProjSpawner : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
+            //when the player clicks their left mouse button, shoots a projectile towards where their mouse is
             foreach(GameObject proj in projList)
             {
                 if(proj.activeSelf == false)

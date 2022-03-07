@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//base class for the enemy's finite state machine
 public abstract class EnemyBaseState 
 {
     public abstract void EnterState(EnemyTemplate enemy);

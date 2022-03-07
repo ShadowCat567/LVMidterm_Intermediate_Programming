@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class EnemyProjBeh : MonoBehaviour
 {
-    public float projectileVelocity = 8.0f;
+    //variables related to the projectile
+    private float _projectileVelocity = 8.0f;
+    public float projectileVelocity
+    {
+        get { return _projectileVelocity; }
+    }
+
     [SerializeField] GameObject enemyProjectile;
+    //how long projctile lasts before it self-destructs
     float projectileLifetime = 0.8f;
+    //direction projectile moves in
     public Vector3 enemyProjDirection;
     Rigidbody2D rb;
     GameObject player;
@@ -20,17 +28,19 @@ public class EnemyProjBeh : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //destroys projectile after a set amount of time
         StartCoroutine(DeactivateProjectile(projectileLifetime));
     }
 
     private void FixedUpdate()
     {
-        enemyProjDirection = (player.transform.position - transform.position).normalized * projectileVelocity;
-        rb.velocity = new Vector2(enemyProjDirection.x, enemyProjDirection.y);
+        //moves projectile
+        rb.velocity = enemyProjDirection * projectileVelocity;
     }
 
     IEnumerator DeactivateProjectile(float lifetime)
     {
+        //deactiaves projectile
         yield return new WaitForSeconds(lifetime);
         enemyProjectile.SetActive(false);
     }
@@ -39,6 +49,7 @@ public class EnemyProjBeh : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<PlayerMovement>())
         {
+            //if the pojectile collides with the player, deactivate
             enemyProjectile.SetActive(false);
         }
     }

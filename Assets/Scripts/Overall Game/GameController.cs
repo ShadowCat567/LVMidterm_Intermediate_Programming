@@ -5,6 +5,7 @@ using TMPro;
 
 public class GameController : MonoBehaviour
 {
+    //variables related to the state the game is in
     public BaseGameState curstate;
     public StartGameState startState = new StartGameState();
     public RecepeCollectionState recepeCollState = new RecepeCollectionState();
@@ -17,7 +18,7 @@ public class GameController : MonoBehaviour
     public TMP_Text startButtonText;
     public TMP_Text startText;
 
-    //variables related to the play state
+    //variables related to the Recipe collection and Item collection states
     [Header("Playing Game")]
     public GameObject player;
     public GameObject recepeEnemies;
@@ -34,6 +35,7 @@ public class GameController : MonoBehaviour
     public TMP_Text exitButtonText;
     public TMP_Text gameOverText;
 
+    //changes the game's state
     public void ChangeState(BaseGameState newState)
     {
         if(curstate != null)
@@ -51,6 +53,7 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+        //deactivates everything from the Recipe collection and Item collection states
         player.SetActive(false);
         recepeEnemies.SetActive(false);
         itemCollectionSpawners.SetActive(false);
@@ -59,17 +62,13 @@ public class GameController : MonoBehaviour
         playerUI.SetActive(false);
         objectiveText.text = "";
 
+        //deactivates everything in the end state
         exitButton.SetActive(false);
         exitButtonText.text = "";
         gameOverText.text = "";
 
+        //starts in the start state
         ChangeState(startState);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
@@ -80,6 +79,7 @@ public class GameController : MonoBehaviour
 
     public void Reactivate()
     {
+        //if the player dies in the Recipe collection state, reactivates the enemies they killed
         for(int i = 0; i < recipeEnemiesArr.Length; i ++)
         {
             if(recipeEnemiesArr[i].activeSelf == false)
