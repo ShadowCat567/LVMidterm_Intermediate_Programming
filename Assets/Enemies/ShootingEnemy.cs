@@ -6,7 +6,7 @@ public class ShootingEnemy : EnemyTemplate
 {
     [SerializeField] GameObject droppedItem;
     Vector3 droppedPos;
-    int maxHealthShooting = 1;
+    public int maxHealthShooting = 1;
 
     private void Awake()
     {

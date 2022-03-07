@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
     [Header("Playing Game")]
     public GameObject player;
     public GameObject recepeEnemies;
+    public GameObject[] recipeEnemiesArr = new GameObject[5];
     public GameObject itemCollectionSpawners;
     public TMP_Text objectiveText;
     public GameObject witchHut;
@@ -73,5 +74,25 @@ public class GameController : MonoBehaviour
     void Update()
     {
         curstate.UpdateState(this);
+    }
+
+    public void Reactivate()
+    {
+        for(int i = 0; i < recipeEnemiesArr.Length; i ++)
+        {
+            if(recipeEnemiesArr[i].activeSelf == false)
+            {
+                if(recipeEnemiesArr[i].GetComponent<EnemyTemplate>().isRanged)
+                {
+                    recipeEnemiesArr[i].GetComponent<ShootingEnemy>().curHealth = recipeEnemiesArr[i].GetComponent<ShootingEnemy>().maxHealthShooting;
+                }
+                else
+                {
+                    recipeEnemiesArr[i].GetComponent<ChargingEnemy>().curHealth = recipeEnemiesArr[i].GetComponent<ChargingEnemy>().maxHealthCharging;
+                }
+
+                recipeEnemiesArr[i].SetActive(true);
+            }
+        }
     }
 }

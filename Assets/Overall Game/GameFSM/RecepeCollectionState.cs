@@ -15,7 +15,11 @@ public class RecepeCollectionState : BaseGameState
 
     public override void UpdateState(GameController manager)
     {
-        
+        if(manager.player.GetComponent<PlayerMovement>().playerKilled == true)
+        {
+            manager.player.GetComponent<PlayerMovement>().Respawn();
+            manager.Reactivate();
+        }
     }
 
     public override void ExitState(GameController manager)

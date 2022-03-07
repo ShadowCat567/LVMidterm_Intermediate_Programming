@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     int maxHealthPlayer = 3;
     public bool playerKilled;
     [SerializeField] Image [] healthArr = new Image[3];
+    [SerializeField] GameObject respwnPosition;
 
     public Dictionary<string, int> inventory = new Dictionary<string, int>();
     public List<string> recepieLst = new List<string>();
@@ -100,7 +101,17 @@ public class PlayerMovement : MonoBehaviour
         recepieLst.Clear();
         inventory.Clear();
         curHealth = maxHealthPlayer;
+        ResetHearts();
         playerKilled = false;
+        transform.position = respwnPosition.transform.position;
+    }
+
+    void ResetHearts()
+    {
+        for(int i = 0; i < healthArr.Length; i ++)
+        {
+            healthArr[i].enabled = true;
+        }
     }
 
     //Used this to help figure out quicksort: https://www.geeksforgeeks.org/quick-sort/

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChargingEnemy : EnemyTemplate
 {
-    int maxHealthCharging = 2;
+    public int maxHealthCharging = 2;
     [SerializeField] GameObject droppedItem;
     Vector3 droppedPos;
 
