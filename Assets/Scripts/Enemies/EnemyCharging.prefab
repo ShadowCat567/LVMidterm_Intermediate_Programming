@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4768867545980174903}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.3, y: 3.37, z: 0}
-  m_LocalScale: {x: 1, y: 1.975, z: 1}
+  m_LocalScale: {x: 0.57563657, y: 0.59686315, z: 0.57563657}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2c9b7fe2f4cace14d9ba2e814e74f91d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,7 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bfda7447e8e674fbf7376fe5ed3f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyVelo: 2
   minChaseDistance: 6
   maxChaseDistance: 8
   minFireDistance: 5
@@ -108,10 +107,9 @@ MonoBehaviour:
   enemy: {fileID: 4768867545980174903}
   enemyProjectile: {fileID: 142810185145467944, guid: bdbdc25df9b7a1040b514d5a30a4a4fb, type: 3}
   enemyProjLst: []
-  numEnemyProj: 3
   spawnPos: {x: 0, y: 0, z: 0}
-  timeBetwnSpawns: 1
   spawnTimer: 0
+  maxHealthCharging: 2
   droppedItem: {fileID: 1267402593637277500, guid: 8caa7ad89987027499a384d1f81b8116, type: 3}
 --- !u!61 &4768867545980174899
 BoxCollider2D:
@@ -126,16 +124,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.054137856, y: 0.01305294}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.5}
+    oldSize: {x: 2.5, y: 2.5}
     newSize: {x: 1, y: 0.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 1.2526429, y: 1.8662231}
   m_EdgeRadius: 0

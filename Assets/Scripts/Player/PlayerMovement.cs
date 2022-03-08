@@ -117,11 +117,24 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Respawn()
+    public void RecipeRespawn()
     {
-        //reset variables for the player to be respawned
+        //reset variables for the player to be respawned during the recipe collection state
         recepieLst.Clear();
-        inventory.Clear();
+        curHealth = maxHealthPlayer;
+        ResetHearts();
+        playerKilled = false;
+        transform.position = respwnPosition.transform.position;
+    }
+
+    public void InvenRespawn()
+    {
+        //reset variables for the player to be respawned during the item collection state
+        inventory["Fireball"] = 0;
+        inventory["Nightshade"] = 0;
+        inventory["Corrosive Flesh"] = 0;
+        inventory["Moonstone"] = 0;
+        inventory["Dragonwort"] = 0;
         curHealth = maxHealthPlayer;
         ResetHearts();
         playerKilled = false;

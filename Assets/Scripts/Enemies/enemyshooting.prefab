@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 9127727396687071732}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.15, y: 3.94, z: 0}
-  m_LocalScale: {x: 0.8875, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.52140623, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1f62c6e50d510e746ac4e786a3d787db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,7 +103,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 2}
+    oldSize: {x: 2.5, y: 2.5}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -124,7 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06bdaee098a594448c6053559276650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyVelo: 2
   minChaseDistance: 15
   maxChaseDistance: 20
   minFireDistance: 4
@@ -134,8 +133,6 @@ MonoBehaviour:
   enemy: {fileID: 9127727396687071732}
   enemyProjectile: {fileID: 142810185145467944, guid: bdbdc25df9b7a1040b514d5a30a4a4fb, type: 3}
   enemyProjLst: []
-  numEnemyProj: 5
   spawnPos: {x: 0, y: 0, z: 0}
-  timeBetwnSpawns: 1
   spawnTimer: 0
   droppedItem: {fileID: 3683128130616283493, guid: 47c0a2e52f75e154096cfde8c005fb56, type: 3}

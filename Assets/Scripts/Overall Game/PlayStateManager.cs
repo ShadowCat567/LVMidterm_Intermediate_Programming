@@ -15,7 +15,7 @@ public class PlayStateManager : MonoBehaviour
     //variables having to do with text that is displayed
     string startRecipeColl1 = "It seems last night someone (or a group of someones) took my potion recipe. I need you to get it back so I can make the potion. Come back here once you've gotten the recipe back.";
     string notAllRecipe = "It seems like something's missing, keep looking.";
-    string startItemColl1 = "Now that you've gotten the recipe back, I need you to find the ingredients so I can make it. The quatities of each ingredient are listed in the recipe. Come back when you've gotten all the ingredients.";
+    string startItemColl1 = "Now that you've gotten the recipe back, I need you to find the ingredients so I can make it. The quantities of each ingredient are listed in the recipe. Come back when you've gotten all the ingredients.";
     [SerializeField] TMP_Text witchText;
     [SerializeField] GameObject witchTextBox;
 

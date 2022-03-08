@@ -17,7 +17,7 @@ public class ItemCollectionState : BaseGameState
         //if the player is killed, respawn them, not nessicary to reset enemies
         if (manager.player.GetComponent<PlayerMovement>().playerKilled == true)
         {
-            manager.player.GetComponent<PlayerMovement>().Respawn();
+            manager.player.GetComponent<PlayerMovement>().InvenRespawn();
         }
     }
 
@@ -30,6 +30,7 @@ public class ItemCollectionState : BaseGameState
         manager.recepeEnemies.SetActive(false);
         manager.itemCollectionSpawners.SetActive(false);
         manager.witchDialog.SetActive(false);
+        manager.barrier.SetActive(false);
         manager.objectiveText.text = "";
     }
 }

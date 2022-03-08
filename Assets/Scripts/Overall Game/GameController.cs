@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour
     public GameObject witchHut;
     public GameObject playerUI;
     public GameObject witchDialog;
+    public GameObject barrier;
 
     //variables related to the end state
     [Header("Game End")]
@@ -60,6 +61,7 @@ public class GameController : MonoBehaviour
         witchHut.SetActive(false);
         witchDialog.SetActive(false);
         playerUI.SetActive(false);
+        barrier.SetActive(false);
         objectiveText.text = "";
 
         //deactivates everything in the end state

@@ -12,6 +12,7 @@ public class RecepeCollectionState : BaseGameState
         manager.witchHut.SetActive(true);
         manager.recepeEnemies.SetActive(true);
         manager.witchDialog.SetActive(true);
+        manager.barrier.SetActive(true);
         manager.objectiveText.text = "OBJECTIVE: Collect the missing recipe fragments";
     }
 
@@ -20,7 +21,7 @@ public class RecepeCollectionState : BaseGameState
         //if the player is killed, respawn them and reset the enemies
         if(manager.player.GetComponent<PlayerMovement>().playerKilled == true)
         {
-            manager.player.GetComponent<PlayerMovement>().Respawn();
+            manager.player.GetComponent<PlayerMovement>().RecipeRespawn();
             manager.Reactivate();
         }
     }
